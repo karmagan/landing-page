@@ -22,14 +22,22 @@
  * Define Global Variables
  * 
 */
-
-
+const navbarList = document.getElementById('navbar__list')
+const sectionsList = document.querySelectorAll('section')
 /**
  * End Global Variables
  * Start Helper Functions
  * 
 */
-
+const formatNavItem = (section)=>{
+    const navItem = document.createElement('li')
+    const itemLink = document.createElement('a')
+    itemLink.textContent = section.getAttribute('data-nav')
+    itemLink.href = '#'+section.id
+    itemLink.classList.add('menu__link')
+    navItem.appendChild(itemLink)
+    return navItem
+}
 
 
 /**
@@ -39,7 +47,13 @@
 */
 
 // build the nav
-
+const createNavbar = () =>{
+    let output = document.createDocumentFragment()
+    sectionsList.forEach((section)=>{
+        output.append(formatNavItem(section))
+    })
+    navbarList.appendChild(output)
+}
 
 // Add class 'active' to section when near top of viewport
 
@@ -52,6 +66,7 @@
  * Begin Events
  * 
 */
+window.addEventListener('DOMContentLoaded',createNavbar)
 
 // Build menu 
 
