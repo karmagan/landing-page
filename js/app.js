@@ -77,10 +77,14 @@ const activateSection = () => {
 
 // Scroll to anchor ID using scrollTO event
 
-const navigateHandler = (e)=>{
-    e.preventDefault()
-    document.querySelector(`section${e.target.getAttribute('href')}`).scrollIntoView({behavior:'smooth'})
-}
+const navigateHandler = (e) => {
+  if (e.target.tagName === "A") {
+    e.preventDefault();
+    document
+      .querySelector(`section${e.target.getAttribute("href")}`)
+      .scrollIntoView({ behavior: "smooth" });
+  }
+};
 
 /**
  * End Main Functions
@@ -92,13 +96,16 @@ const navigateHandler = (e)=>{
 window.addEventListener("DOMContentLoaded", createNavbar);
 
 // Scroll to section on link click
-document.querySelector('#navbar__list').addEventListener('click',navigateHandler)
-document.querySelector('#link__top').addEventListener('click',function(e){
-  e.preventDefault()
+document
+  .querySelector("#navbar__list")
+  .addEventListener("click", navigateHandler);
+  
+document.querySelector("#link__top").addEventListener("click", function (e) {
+  e.preventDefault();
   window.scroll({
-    top:0,
-    behavior:'smooth',
-  })
-})
+    top: 0,
+    behavior: "smooth",
+  });
+});
 // Set sections as active
 document.addEventListener("scroll", activateSection);

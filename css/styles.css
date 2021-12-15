@@ -68,10 +68,12 @@ section {
     padding-left: 0;
     margin: 0;
     text-align: right;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .navbar__menu li {
-    display: inline-block;
+    display: block;
 }
 
 .navbar__menu .menu__link {
@@ -131,6 +133,7 @@ section {
 /* Landing Container Styles */
 .landing__container {
     padding: 1em;
+    padding-top: 4em;
     text-align: left;
 }
 
@@ -138,6 +141,14 @@ section {
     .landing__container {
         max-width: 50em;
         padding: 4em;
+    }
+
+    .navbar__menu ul{
+        display:block;
+    }
+
+    .navbar__menu li {
+        display: inline-block;
     }
 }
 
